@@ -8,7 +8,7 @@ Conj -> "and" | "until"
 Det -> "a" | "an" | "his" | "my" | "the"
 N -> "armchair" | "companion" | "day" | "door" | "hand" | "he" | "himself"
 N -> "holmes" | "home" | "i" | "mess" | "paint" | "palm" | "pipe" | "she"
-N -> "smile" | "thursday" | "walk" | "we" | "word"
+N -> "smile" | "thursday" | "walk" | "we" | "word" | "country" | "walk" | "thursday" | "mess" | "paint" | "palm" | "hand"
 P -> "at" | "before" | "in" | "of" | "on" | "to"
 V -> "arrived" | "came" | "chuckled" | "had" | "lit" | "said" | "sat"
 V -> "smiled" | "tell" | "were"
@@ -23,7 +23,6 @@ PP -> P NP
 
 grammar = nltk.CFG.fromstring(NONTERMINALS + TERMINALS)
 parser = nltk.ChartParser(grammar)
-
 
 def main():
     # If filename specified, read sentence from file
