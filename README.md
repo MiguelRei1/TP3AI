@@ -13,5 +13,8 @@ Este projeto é uma aplicação de Processamento de Linguagem Natural (PLN) que 
 1. Clone o repositório:
    ```bash
    git clone https://github.com/seuusuario/TP3AI.git
+2. Corra o trabalho:
+   ```bash
+   python parser.py
 
 

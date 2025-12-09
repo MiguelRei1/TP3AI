@@ -16,13 +16,14 @@ V -> "smiled" | "tell" | "were"
 
 NONTERMINALS = """
 S -> NP VP | S Conj S
-NP -> N | Det N | Det Adj N | NP PP
-VP -> V | V NP | V NP PP | V PP | VP Adv
-PP -> P NP
+NP -> N | Det N | Det Adj N | Det Adj Adj N | NP PP | NP Conj NP
+VP -> V | V NP | V NP PP | V PP | VP Adv | V Adv | VP Conj VP
+PP -> P NP | PP PP
 """
 
 grammar = nltk.CFG.fromstring(NONTERMINALS + TERMINALS)
 parser = nltk.ChartParser(grammar)
+
 
 def main():
     # If filename specified, read sentence from file
@@ -50,6 +51,7 @@ def main():
         for np in np_chunk(tree):
             print(" ".join(np.flatten()))
 
+
 def preprocess(sentence):
     """
     Convert `sentence` to a list of its words.
@@ -60,6 +62,7 @@ def preprocess(sentence):
     import re
     words = nltk.word_tokenize(sentence.lower())
     return [word for word in words if re.search(r"[a-zA-Z]", word)]
+
 
 def np_chunk(tree):
     """
@@ -74,6 +77,7 @@ def np_chunk(tree):
         if not any(child.label() == "NP" for child in subtree.subtrees(lambda t: t != subtree)):
             chunks.append(subtree)
     return chunks
+
 
 if __name__ == "__main__":
     main()
